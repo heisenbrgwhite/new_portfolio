@@ -1,0 +1,35 @@
+.scroll-to-top {
+    position: fixed;
+    width: 100px;
+    border-radius: 50%;
+    z-index: -9999;
+}
+
+.scroll-to-top.show {
+    position: fixed;
+    width: 100px;
+    bottom: 100px;
+    right: 50px;
+    z-index: 999999;
+}
+@-webkit-keyframes bounce { 
+    0%, 20%, 50%, 80%, 100% {-webkit-transform: translateY(0);} 
+    40% {-webkit-transform: translateY(-15px);} 
+    60% {-webkit-transform: translateY(-15px);} 
+ } 
+ 
+ @keyframes bounce { 
+    0%, 20%, 50%, 80%, 100% {transform: translateY(0);} 
+    40% {transform: translateY(-15px);} 
+    60% {transform: translateY(-15px);} 
+ }
+.scroll-to-top.show img {
+    border-radius: 50%;
+    box-shadow: 0 8px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+    cursor: pointer;
+    background-repeat: no-repeat;
+    -webkit-animation-name: bounce;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-fill-mode: both; 
+    -webkit-animation-iteration-count: infinite;
+}

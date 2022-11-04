@@ -1,0 +1,52 @@
+.skills {
+    min-height: 100vh;
+    min-width: 80vw;
+    padding: 100px 0px 100px 0;
+    background-image: url('../../assets/bg-2.jpg');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    z-index: 1;
+    position: relative;
+}
+
+.skills .skills-box {
+    text-align: center;
+}
+
+.skills h5 {
+    font-size: 45px;
+    font-weight: 700;
+}
+
+.skills p {
+    color: #B8B8B8;
+    font-size: 18px;
+    letter-spacing: 0.8px;
+    line-height: 1.5em;
+    margin: 14px 0 75px 0;
+}
+
+.skill-slider {
+    width: 80%;
+    margin: 0 auto;
+    position: relative;
+}
+.skills .skill-item {
+    display: inline;
+    text-align: center;
+}
+
+.skills .skill-item .CircularProgressbar{
+    width: 50%;
+    margin: 0 auto 15px auto;
+}
+
+.skills .skill-image{
+    height: 300px;
+    background-color: #fff;
+    width: 100%;
+}
+.skills .skill-image img {
+    background-size: cover;
+}

@@ -1,23 +1,26 @@
 import logo from './logo.svg';
 import './App.css';
+import { NavBar } from './components/Nav_Bar/NavBar';
+import { About } from './components/About/about';
+import { useState } from 'react';
+import { Skills } from './components/Skills/skills';
+import { GoToTop } from './components/GoToTop/GoToTop';
+import { Projects } from './components/Projects/projects';
+import { ContactForm } from './components/ContactForm/contact-form';
+import { Footer } from './components/Footer/footer';
 
 function App() {
+  const [isJap, setIsJap] = useState(false);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {/* //Navigation Bar */}
+      <GoToTop/>
+      <NavBar setLang={isJap} setNewLang = {(val)=>{setIsJap(val);}}/>
+      <About/>
+      <Skills/>
+      <Projects/>
+      <ContactForm/>
+      <Footer/>
     </div>
   );
 }
