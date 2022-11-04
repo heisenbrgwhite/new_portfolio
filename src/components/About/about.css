@@ -62,6 +62,7 @@
     letter-spacing: 0.8px;
     line-height: 1.5em;
     width: 96%;
+    text-shadow: 1px 1px 2px black, 0 0 1em lightblue, 0 0 0.2em lightblue;
   }
   .about button {
     position: relative;
