@@ -6,9 +6,19 @@ import "react-circular-progressbar/dist/styles.css";
 import ReactVisibilitySensor from "react-visibility-sensor";
 import { Container, Row, Col } from "react-bootstrap";
 import "./skills.css";
-import skill from "../../assets/thumb.jpeg";
+import { useEffect } from "react";
+import ScrollIntoView from "react-scroll-into-view";
+import { FaChevronDown } from "react-icons/fa";
 
 export const Skills = () => {
+
+  // useEffect(()=>{
+  //   const onScroll = () =>{
+  //     document.getElementById('projects').scrollIntoView({behaviour: 'smooth'});
+  //   }
+  //   window.addEventListener("scroll", onScroll);
+  //   return ()=>{ window.removeEventListener("scroll",onScroll);}
+  // },[])
   const responsive = {
     superLargeDesktop: {
       // the naming can be any, depends on you.
@@ -135,7 +145,12 @@ export const Skills = () => {
             </div>
           </Col>
           </Row>
-          
+          <Row className="justify-content-center">
+          <ScrollIntoView selector="#projects" className="click-text">
+            <p>Click to see my projects!</p>
+            <FaChevronDown className="scroll-down-icon"  />
+          </ScrollIntoView>
+        </Row>
       </Container>
       {/* <span className="skill-image"><img src={skill}/></span> */}
     </section>

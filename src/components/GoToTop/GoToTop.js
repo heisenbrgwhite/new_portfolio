@@ -8,7 +8,7 @@ export const GoToTop = ()=>{
         const toggleShow = () => {
             if(window.scrollY>100){
                 setShow(true);
-                console.log(show);
+                //console.log(show);
             }
             else setShow(false);
         }

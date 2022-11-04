@@ -14,14 +14,18 @@
     min-height: 100vh;
     margin-top: 0;
     padding: 260px 0 100px 0;
-    background-image: url('../../assets/banner-bg.png');
+    background-image: url('../../assets/banner-bg.jpg');
     background-position: center;
     background-size: 100% 100%;
     background-repeat: no-repeat;
     z-index: 1;
     position: relative;
 }
-
+@media screen and (max-width: 765px){
+  .about {
+    background: #000000;
+  }
+}
 .about .tagline {
     font-weight: 700;
     letter-spacing: 0.8px;
@@ -52,8 +56,9 @@
   }
 
   .about p {
-    color: #B8B8B8;
-    font-size: 18px;
+    color: #fff;
+    font-weight: 800;
+    font-size: 30px;
     letter-spacing: 0.8px;
     line-height: 1.5em;
     width: 96%;
