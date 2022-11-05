@@ -5,6 +5,7 @@ import emailjs from "@emailjs/browser";
 import img from "../../assets/contact-me.jpg";
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./contact-form.css";
+import { Footer } from "../Footer/footer";
 export const ContactForm = () => {
   const formInitialDetails = {
       firstName: "",
@@ -29,10 +30,10 @@ export const ContactForm = () => {
       setButtonText('Sending...');
       emailjs
         .sendForm(
-          "service_zuqkcj2",
-          "template_sd5m3w6",
+          process.env.REACT_APP_SERVICE_ID,
+          process.env.REACT_APP_TEMP_ID,
           form.current,
-          "-CIvMj6mZ95rm1sEj"
+          process.env.REACT_APP_PUBLIC_KEY
         )
         .then(
           (result) => {
@@ -138,6 +139,7 @@ export const ContactForm = () => {
             </Col>
           </Row>
         </Container>
+        <Footer/>
       </section>
     </>
   );

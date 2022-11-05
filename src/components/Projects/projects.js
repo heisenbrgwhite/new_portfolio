@@ -5,6 +5,7 @@ import Card from "react-bootstrap/Card";
 import 'bootstrap/dist/css/bootstrap.min.css';
 import valflix from "../../assets/valflix.JPG";
 import chatify from "../../assets/chatify.jpg";
+import workInProgress from "../../assets/work_in_progress.jpg"
 export const Projects = () => {
   return (
     <section id="projects" className="projects">
@@ -12,14 +13,14 @@ export const Projects = () => {
         <Row>
           <h2>My Projects</h2>
           <p>About my projects and how i made it</p>
+          
           <Col xs={12} md={6} xl={6} className="project-item">
             <Card style={{ width: "90%" }} className="project">
               <Card.Img variant="top" src={valflix} />
               <Card.Body>
                 <Card.Title>Valflix</Card.Title>
                 <Card.Text>
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
+                  A netflix clone that I built while learning firebase and styled Components. I used Firebase for the database/API. I used styled components to design the UI.
                 </Card.Text>
                 <Button variant="primary" href="http://valflix.sarkardev.online/">Go to Website</Button>
               </Card.Body>
@@ -32,13 +33,41 @@ export const Projects = () => {
               <Card.Body>
                 <Card.Title>Chatify</Card.Title>
                 <Card.Text>
-                  Some quick example text to build on the card title and make up
-                  the bulk of the card's content.
+                  This is a normal chat app built with Firebase. It has the functionality of chatting in realtime with all the existing users. 
+                </Card.Text>
+                <Button variant="primary" href="https://soumyajeet-sarkar-chatify.netlify.app">Go to Website</Button>
+              </Card.Body>
+            </Card>
+          </Col>
+
+          <Col xs={12} md={6} xl={6} className="project-item">
+            <Card style={{ width: "90%" }} className="project">
+              <Card.Img variant="top" src={workInProgress} />
+              <Card.Body>
+                <Card.Title>Sort Visualizer</Card.Title>
+                <Card.Text>
+                  This is a project where user can input a desired array of numbers and watch it get sorted by the chosen Sort method. Sort methods include Bubble Sort, Insertion Sort and Merge Sort.
+                  ***I am currently working on this project and will upload it soon.***
+                </Card.Text>
+                <Button variant="primary" href="http://valflix.sarkardev.online/">Go to Website</Button>
+              </Card.Body>
+            </Card>
+          </Col>
+
+          <Col xs={12} md={6} xl={6} className="project-item">
+            <Card style={{ width: "90%" }} className="project">
+              <Card.Img variant="top" src={workInProgress} />
+              <Card.Body>
+                <Card.Title>More Projects Coming Soon</Card.Title>
+                <Card.Text>
+  
                 </Card.Text>
                 <Button variant="primary" href="#">Go to Website</Button>
               </Card.Body>
             </Card>
           </Col>
+
+          
         </Row>
       </Container>
     </section>

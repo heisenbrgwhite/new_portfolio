@@ -22,8 +22,11 @@
 .projects .project-item {
     display: flex;
     justify-content: center;
+    margin-bottom: 20px;
 }
-
+.projects .project-item .project {
+    height: 340px;
+}
 .projects .project-item .project.card {
     display: flex;
     position: relative;
@@ -37,12 +40,12 @@
     top: 0;
     left: 0;
     width: 100%;
-    height: 100%;
+    height: 340px;
     opacity: 0;
     transition: 0.3s ease-in-out;
 }
 .projects .project-item .project div.card-body:hover {
-    padding-top: 5rem;
+    padding-top: 10%;
     opacity: 1;
     background-color: rgba(0,0,0,0.8);
 }
