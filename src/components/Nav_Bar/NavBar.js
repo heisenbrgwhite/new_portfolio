@@ -88,10 +88,10 @@ export const NavBar = () => {
           </Nav>
           <span className="navbar-text">
             <div className="social-icon">
-              <a href="#">
+              <a href="https://github.com/heisenbrgwhite">
                 <FaGithub className="icon-github" />
               </a>
-              <a href="#">
+              <a href="https://www.linkedin.com/in/soumyajeet-sarkar-0aa39b217/">
                 <FaLinkedin className="icon-linkedin" />
               </a>
             </div>

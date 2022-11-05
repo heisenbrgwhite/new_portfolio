@@ -21,7 +21,7 @@ export const Projects = () => {
                   Some quick example text to build on the card title and make up
                   the bulk of the card's content.
                 </Card.Text>
-                <Button variant="primary" href="#">Go to Website</Button>
+                <Button variant="primary" href="http://valflix.sarkardev.online/">Go to Website</Button>
               </Card.Body>
             </Card>
           </Col>
