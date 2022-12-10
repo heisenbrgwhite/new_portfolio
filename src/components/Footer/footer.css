@@ -1,12 +1,16 @@
 .footer {
     min-width: 100%;
     padding: 1.5rem 0;
-    height: 20vh;
+    height: fit-content;
     background: linear-gradient(90.21deg, #460af9 -10.91%, #dd74d7 120%);
     display: flex;
     text-align: center;
-    
 }
+@media (max-width: 600px) {
+    .footer{
+      background: transparent;
+    }
+  }
 
 .footer span.socials {
     display: flex;

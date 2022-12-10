@@ -13,7 +13,7 @@ export const Projects = () => {
       <Container>
         <Row>
           <h2>My Projects</h2>
-          <p>About my projects and how i made it</p>
+          <p>These are some of my projects I decided to upload. I am working on more projects while learning about new technologies.</p>
 
           <Col xs={12} md={6} xl={6} className="project-item">
             <Card style={{ width: "90%" }} className="project">
@@ -60,7 +60,7 @@ export const Projects = () => {
               <Card.Body>
                 <Card.Title>Sort Visualizer</Card.Title>
                 <Card.Text>
-                  This is a project where user can input a desired array of numbers and watch it get sorted by the chosen Sort method. Sort methods include Bubble Sort, Insertion Sort and Merge Sort.
+                  This project visualizes sorting methods on random generated array. Sort methods include Bubble Sort, Insertion Sort and Merge Sort.
                   ***I am currently working on this project***
                 </Card.Text>
                 <Button variant="primary" href="https://sort-visualizer-soumyjeetsarkar.netlify.app">Go to Website</Button>
