@@ -4,7 +4,8 @@ This project was bootstrapped with [Create React App] (https://github.com/facebo
 
 # About the Project
 
-xyz
+I created this portfolio website to display information about me and the projects I am currently developing. I used React and plain CSS for this single page webpage.
+link: https://soumyajeet-sarkar-portfolio.netlify.app/
 
 ## Available Scripts
 
