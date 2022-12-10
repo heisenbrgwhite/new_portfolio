@@ -48,8 +48,8 @@ export const About = () => {
             {/*Main About section on left*/}
           <Col xs={12} md={6} xl={7} className="about-text">
             <span className="tagline">Welcome to my Portfolio</span>
-            <h1>{`Hi! I am Soumyajeet,`}<span className="wrap">A {text}</span></h1>
-            <p>Welcome to my portfolio. I am an aspiring Web developer and Cloud Enthusiast. I am currently studying in 3rd year at the prestigious Tohoku University in Sendai. If you are a tech enthusiast like me let's connect on LinkedIn. </p>
+            <h1>{`<h1>Hi! I am Soumyajeet,`}<span className="wrap">A {text}</span>{`</h1>`}</h1>
+            <p>Welcome to my portfolio. I am an aspiring Web/App developer and learning Cloud Architecture and IaC. I am currently studying in 3rd year at the prestigious Tohoku University in Sendai. If you are a tech enthusiast like me let's connect on LinkedIn. </p>
             <button><span>Connect</span></button>
           </Col>
           {/*Portfolio Image on right*/}

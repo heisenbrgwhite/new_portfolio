@@ -1,25 +1,33 @@
 nav.navbar {
   padding: 10px 0;
   position: fixed;
-  width: 100%;
   top: 0;
   z-index: 9999;
   transition: 0.32s ease-in-out;
   background: transparent;
 }
+nav.navbar.scrolled {
+  padding: 10px 0;
+  background: #121212;
+  height: 80px;
+}
+
 @media screen and (max-width: 765px){
   nav.navbar {
-    background: #000000;
+    background: lightskyblue;
+    box-shadow: 0 4px 2px -2px black;
+  }
+  nav.navbar .container {
+    width: 100vw;
+    top: 10px;
+  }
+  nav.navbar.scrolled .navbar-collapse{
+    background: #121212;
   }
 }
 
-nav.navbar.scrolled {
-  padding: 0px 0;
-  background: #121212;
-}
-
 nav.navbar a.navbar-brand {
-  padding-left: 15px;
+  margin-left: 15px;
 }
 
 nav.navbar h2 {

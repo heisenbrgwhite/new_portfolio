@@ -16,14 +16,15 @@
     padding: 260px 0 100px 0;
     background-image: url('../../assets/banner-bg.jpg');
     background-position: center;
-    background-size: 100% 100%;
+    background-size: cover;
     background-repeat: no-repeat;
     z-index: 1;
     position: relative;
 }
 @media screen and (max-width: 765px){
   .about {
-    background: #000000;
+    background: linear-gradient(-20deg, rgba(2,0,36,1) 20%, rgba(9,73,121,1) 60%, rgba(0,212,255,1) 100%);
+    padding-top:100px;
   }
 }
 .about .tagline {
@@ -38,7 +39,7 @@
 }
 
 .about h1 {
-    font-size: 65px;
+    font-size: 60px;
     font-weight: 700;
     letter-spacing: 0.8px;
     line-height: 1;
@@ -47,12 +48,14 @@
   }
 
   .about .wrap {
-    font-size: 65px;
+    font-size: 60px;
     font-weight: 700;
     letter-spacing: 0.8px;
     line-height: 1;
     margin-bottom: 20px;
     display: block;
+    height: 90px;
+    margin-bottom: 10px;
   }
 
   .about p {
@@ -70,7 +73,7 @@
     background-color: transparent;
     font-weight: 700;
     font-size: 20px;
-    margin-top: 30px;
+    margin-top: 20px;
     letter-spacing: 0.8px;
     display: flex;
     align-items: center;
@@ -153,4 +156,20 @@
 .about .click-text p {
     width: 100%;
     text-align: center;
+}
+
+@media screen and (max-width: 765px){
+  .about h1 {
+    font-size: 20px;
+  }
+  .about .wrap{
+    font-size: 30px;
+    height: fit-content;
+  }
+  .about p{
+    font-size: 20px;
+  }
+  .about .about-pic {
+    display: none;
+}
 }

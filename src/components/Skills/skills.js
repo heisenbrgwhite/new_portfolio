@@ -1,154 +1,150 @@
-import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { CircularProgressbar } from "react-circular-progressbar";
 import "react-circular-progressbar/dist/styles.css";
-import ReactVisibilitySensor from "react-visibility-sensor";
 import { Container, Row, Col } from "react-bootstrap";
 import "./skills.css";
-import { useEffect } from "react";
 import ScrollIntoView from "react-scroll-into-view";
-import { FaChevronDown } from "react-icons/fa";
-
+import { FaChevronDown, FaNodeJs, FaReact, FaAws, FaJava } from "react-icons/fa";
+import { AiFillHtml5 } from "react-icons/ai";
+import {SiCss3, SiJavascript, SiFirebase, SiMongodb, SiPostgresql, SiPython , SiGithub} from 'react-icons/si'
+import AOS from "aos";
+import "aos/dist/aos.css";
+import { useEffect } from "react";
 export const Skills = () => {
-
-  // useEffect(()=>{
-  //   const onScroll = () =>{
-  //     document.getElementById('projects').scrollIntoView({behaviour: 'smooth'});
-  //   }
-  //   window.addEventListener("scroll", onScroll);
-  //   return ()=>{ window.removeEventListener("scroll",onScroll);}
-  // },[])
-  const responsive = {
-    superLargeDesktop: {
-      // the naming can be any, depends on you.
-      breakpoint: { max: 4000, min: 3000 },
-      items: 5,
-    },
-    desktop: {
-      breakpoint: { max: 3000, min: 1024 },
-      items: 3,
-    },
-    tablet: {
-      breakpoint: { max: 1024, min: 464 },
-      items: 2,
-    },
-    mobile: {
-      breakpoint: { max: 464, min: 0 },
-      items: 1,
-    },
-  };
+  useEffect(() => {
+    AOS.init({
+      disable:'mobile'
+    });
+    AOS.refresh();
+  }, []);
   return (
     <section id="skills" className="skills">
       <Container>
-      
         <Row className="justify-items-center">
           <Col>
-            <div className="skills-box">
+            <div className="title-box">
               <h2>My Skills</h2>
-              <p>About my skills and how did i learned it.</p>
-              <Carousel
-                showArrows={true}
-                responsive={responsive}
-                infinite={true}
-                className="owl-carousel owl-theme skill-slider"
+              <p>These are some of the skills I have acquired and have been learning, since I started programming and developing. I am constantly studying and trying to learn more.</p>
+            </div>
+            <div className="skills-list">
+              <div //html
+                data-aos="fade-right"
+                data-aos-easing="linear"
+                data-aos-duration="1000"
+                className="skill-item"
               >
-                <div className="skill-item">
-                <ReactVisibilitySensor>
-                    {({ isVisible }) => {
-                      const percentage = isVisible ? 85 : 0;
-                      return (
-                        <CircularProgressbar
-                          value={percentage}
-                          text={`${percentage}%`}
-                        />
-                      );
-                    }}
-                  </ReactVisibilitySensor>
-                  <h5>Html</h5>
-                </div>
+                <AiFillHtml5 />
+                <h5>Html</h5>
+              </div>
 
-                <div className="skill-item">
-                  <ReactVisibilitySensor>
-                    {({ isVisible }) => {
-                      const percentage = isVisible ? 80 : 0;
-                      return (
-                        <CircularProgressbar
-                          value={percentage}
-                          text={`${percentage}%`}
-                        />
-                      );
-                    }}
-                  </ReactVisibilitySensor>
-                  <h5>CSS</h5>
-                </div>
+              <div //css
+                data-aos="fade-down"
+                data-aos-easing="linear"
+                data-aos-duration="1000"
+                className="skill-item"
+              >
+                <SiCss3  />
+                <h5>CSS</h5>
+              </div>
 
-                <div className="skill-item">
-                <ReactVisibilitySensor>
-                    {({ isVisible }) => {
-                      const percentage = isVisible ? 75 : 0;
-                      return (
-                        <CircularProgressbar
-                          value={percentage}
-                          text={`${percentage}%`}
-                        />
-                      );
-                    }}
-                  </ReactVisibilitySensor>
-                  <h5>React.Js</h5>
-                </div>
+              <div //react
+                data-aos="fade-down"
+                data-aos-easing="linear"
+                data-aos-duration="1000"
+                className="skill-item"
+              >
+                <FaReact  />
+                <h5>React</h5>
+              </div>
 
-                <div className="skill-item">
-                <ReactVisibilitySensor>
-                    {({ isVisible }) => {
-                      const percentage = isVisible ? 68 : 0;
-                      return (
-                        <CircularProgressbar
-                          value={percentage}
-                          text={`${percentage}%`}
-                        />
-                      );
-                    }}
-                  </ReactVisibilitySensor>
-                  <h5>Node.Js</h5>
-                </div>
+              <div //nodejs
+                data-aos="fade-left"
+                data-aos-easing="linear"
+                data-aos-duration="1000"
+                className="skill-item"
+              >
+                <FaNodeJs  />
+                <h5>NodeJS</h5>
+              </div>
 
-                <div className="skill-item">
-                <ReactVisibilitySensor>
-                    {({ isVisible }) => {
-                      const percentage = isVisible ? 80 : 0;
-                      return (
-                        <CircularProgressbar
-                          value={percentage}
-                          text={`${percentage}%`}
-                        />
-                      );
-                    }}
-                  </ReactVisibilitySensor>
-                  <h5>Firebase</h5>
-                </div>
-                <div className="skill-item">
-                <ReactVisibilitySensor>
-                    {({ isVisible }) => {
-                      const percentage = isVisible ? 80 : 0;
-                      return (
-                        <CircularProgressbar
-                          value={percentage}
-                          text={`${percentage}%`}
-                        />
-                      );
-                    }}
-                  </ReactVisibilitySensor>
-                  <h5>Python</h5>
-                </div>
-              </Carousel>
+              <div //mongo db
+                data-aos="fade-right"
+                data-aos-easing="linear"
+                data-aos-duration="1000"
+                className="skill-item"
+              >
+                <SiMongodb />
+                <h5>MongoDB</h5>
+              </div>
+                
+              <div // firebase
+              className="skill-item">
+                <SiFirebase/> 
+                <h5>Firebase</h5>
+              </div>
+
+              <div //aws
+              className="skill-item">
+                <FaAws />
+                <h5>AWS</h5>
+              </div>
+
+              <div //sql
+                data-aos="fade-left"
+                data-aos-easing="linear"
+                data-aos-duration="1000"
+                className="skill-item"
+              >
+                <SiPostgresql  />
+                <h5>SQL</h5>
+              </div>
+
+              <div //javascript
+                data-aos="fade-right"
+                data-aos-easing="linear"
+                data-aos-duration="1000"
+                className="skill-item"
+              >
+                <SiJavascript  />
+                <h5>JavaScript</h5>
+              </div>
+
+              <div //python
+                data-aos="fade-up"
+                data-aos-easing="linear"
+                data-aos-duration="1000"
+                className="skill-item"
+              >
+                <SiPython />
+                <h5>Python</h5>
+              </div>
+
+              <div //git
+                data-aos="fade-up"
+                data-aos-easing="linear"
+                data-aos-duration="1000"
+                className="skill-item"
+              >
+                <SiGithub />
+                <h5>Git</h5>
+              </div>
+
+              <div //java
+                data-aos="fade-left"
+                data-aos-easing="linear"
+                data-aos-duration="1000"
+                className="skill-item"
+              >
+                <FaJava  />
+                <h5>Java</h5>
+              </div>
             </div>
           </Col>
-          </Row>
-          <Row className="justify-content-center">
+        </Row>
+        <Row className="justify-content-center">
           <ScrollIntoView selector="#projects" className="click-text">
             <p>Click to see my projects!</p>
-            <FaChevronDown className="scroll-down-icon"  />
+            <FaChevronDown className="scroll-down-icon" />
           </ScrollIntoView>
         </Row>
       </Container>
