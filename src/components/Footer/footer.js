@@ -2,7 +2,7 @@ import "./footer.css";
 import {BsGithub, BsInstagram, BsLinkedin, BsTwitter, BsTwitch} from "react-icons/bs";
 import { FaHeart, FaReact } from "react-icons/fa";
 import "bootstrap/dist/css/bootstrap.min.css";
-import { Col, Row, Container, Nav } from "react-bootstrap";
+import { Row, Container, Nav } from "react-bootstrap";
 export const Footer = () => {
   return (
     <footer className="footer">

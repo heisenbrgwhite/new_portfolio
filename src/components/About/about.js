@@ -50,11 +50,11 @@ export const About = () => {
             <span className="tagline">Welcome to my Portfolio</span>
             <h1>{`<h1>Hi! I am Soumyajeet,`}<span className="wrap">A {text}</span>{`</h1>`}</h1>
             <p>Welcome to my portfolio. I am an aspiring Web/App developer and learning Cloud Architecture and IaC. I am currently studying in 3rd year at the prestigious Tohoku University in Sendai. If you are a tech enthusiast like me let's connect on LinkedIn. </p>
-            <button><span>Connect</span></button>
+            <a href="https://www.linkedin.com/in/soumyajeet-sarkar-0aa39b217/"><button><span>Connect</span></button></a>
           </Col>
           {/*Portfolio Image on right*/}
           <Col xs={12} md={6} xl={5} className="about-pic">
-            <img src={profile} className="profile-pic"/>
+            <img src={profile} alt="profile"className="profile-pic"/>
           </Col>
         </Row>
         <Row className="justify-content-center">

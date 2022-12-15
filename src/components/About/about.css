@@ -67,6 +67,9 @@
     width: 96%;
     text-shadow: 1px 1px 2px black, 0 0 1em lightblue, 0 0 0.2em lightblue;
   }
+  .about a{
+    text-decoration: none;
+  }
   .about button {
     position: relative;
     color: #fff;

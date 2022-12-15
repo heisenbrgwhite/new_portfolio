@@ -34,9 +34,9 @@ export const Projects = () => {
               <Card.Body>
                 <Card.Title>Valflix</Card.Title>
                 <Card.Text>
-                  A netflix clone that I built while learning firebase and styled Components. I used Firebase for the database/API. I used styled components to design the UI.
+                  A netflix clone that I built while learning firebase and styled Components. I used Firebase for the database/API and I used styled components and REACT to design the UI.
                 </Card.Text>
-                <Button variant="primary" href="http://valflix.sarkardev.online/">Go to Website</Button>
+                <Button variant="primary" href="https://sarkar-soumyajeet-valflix.netlify.app">Go to Website</Button>
               </Card.Body>
             </Card>
           </Col>
