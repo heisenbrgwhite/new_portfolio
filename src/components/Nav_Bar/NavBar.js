@@ -88,7 +88,7 @@ export const NavBar = () => {
           </Nav>
           <span className="navbar-text">
             <div className="social-icon">
-              <a href="https://github.com/heisenbrgwhite">
+              <a href="https://github.com/SoumyajeetSarkar">
                 <FaGithub className="icon-github" />
               </a>
               <a href="https://www.linkedin.com/in/soumyajeet-sarkar-0aa39b217/">

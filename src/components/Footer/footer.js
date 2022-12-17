@@ -13,19 +13,19 @@ export const Footer = () => {
           <Row className="align-items-center">
           <span className="socials">
             <Nav>
-              <Nav.Link href="#home" className="socialIcon">
+              <Nav.Link href="https://github.com/SoumyajeetSarkar" className="socialIcon">
                 <BsGithub />
               </Nav.Link>
-              <Nav.Link href="#skills" className="socialIcon">
+              <Nav.Link href="https://www.instagram.com/mr_whytt_/" className="socialIcon">
                 <BsInstagram />
               </Nav.Link>
-              <Nav.Link href="#projects" className="socialIcon">
+              <Nav.Link href="https://www.linkedin.com/in/soumyajeet-sarkar-0aa39b217/" className="socialIcon">
                 <BsLinkedin />
               </Nav.Link>
-              <Nav.Link href="#projects" className="socialIcon">
+              <Nav.Link href="https://twitter.com/SoumyajeetSark4" className="socialIcon">
                 <BsTwitter />
               </Nav.Link>
-              <Nav.Link href="#projects" className="socialIcon">
+              <Nav.Link href="https://www.twitch.tv/heisenbrgwhite" className="socialIcon">
                 <BsTwitch />
               </Nav.Link>
             </Nav>
