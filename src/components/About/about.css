@@ -11,9 +11,9 @@
  }
 
 .about {
-    min-height: 100vh;
+    height: 100vh;
     margin-top: 0;
-    padding: 260px 0 100px 0;
+    padding: 150px 0 100px 0;
     background-image: url('../../assets/banner-bg.jpg');
     background-position: center;
     background-size: cover;
@@ -27,6 +27,7 @@
     padding-top:100px;
   }
 }
+
 .about .tagline {
     font-weight: 700;
     letter-spacing: 0.8px;
@@ -175,4 +176,16 @@
   .about .about-pic {
     display: none;
 }
+}
+
+@media screen and (max-width: 1200px){
+  .about h1 {
+    font-size: 40px;
+  }
+  .about .wrap {
+    font-size: 40px;
+  }
+  .about p {
+    font-size: 20px;
+  }
 }

@@ -76,10 +76,13 @@
   width: 24%;
   margin: 5px;
 }
+.skills .skills-list .skill-item h5 {
+  font-size: 40px;
+}
 
 .skills .skills-list .skill-item svg {
-  height: 40%;
-  width: 40%;
+  height: 30%;
+  width: 30%;
 }
 
 .skills .skill-item .skill-progress {
@@ -88,7 +91,7 @@
 }
 
 @media screen and (max-width: 400px) {
-  .skills .skill-item h5 {
+  .skills .skills-list .skill-item h5 {
     font-size: 20px;
     font-weight: 700;
   }
