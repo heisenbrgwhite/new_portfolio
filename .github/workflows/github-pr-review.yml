@@ -13,12 +13,14 @@ jobs:
       - name: Set up Node.js
         uses: actions/setup-node@v2
         with:
-          node-version: "14"
+          node-version: "20"
 
       - name: Install dependencies
-        run: npm install axios
+        run: npm install axios @google/generative-ai
       - name: Review PR
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
+          GITHUB_REPOSITORY: ${{ github.repository }}
+          GOOGLE_API_KEY: ${{ secrets.GITHUB_TOKEN }}
         run: node comment-pr-changes.js
