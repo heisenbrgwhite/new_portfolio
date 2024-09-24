@@ -1,6 +1,6 @@
 const axios = require("axios");
 const { GoogleGenerativeAI } = require("@google/generative-ai");
-const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY);
+const genAI = new GoogleGenerativeAI("AIzaSyCKSdDPCAi-QLhxFAAZrC8_LJnFjuN_QRk");
 const githubToken = process.env.GITHUB_TOKEN;
 const prNumber = process.env.PR_NUMBER;
 const repo = process.env.GITHUB_REPOSITORY;
