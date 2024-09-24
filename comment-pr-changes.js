@@ -35,11 +35,15 @@ async function getReviewFromApi(changes) {
   const prompt =
     "I want you to review the code changes which is in the format of github changes with prefix + and -. The review rules for now is only one - best practice code for typescript. Don't just review but also request changes based on the rules.\nIf there is suggestion, use github suggestion format: \n{ wrong code }\n{description of suggestion}\n```suggestion\n{only suggested code here}\n```\nchanges:\n" +
     changes;
-
-  const result = await model.generateContent(prompt);
-  const response = result.response;
-  const text = response.text();
-  return text;
+  try {
+    const result = await model.generateContent(prompt);
+    const response = result.response;
+    const text = response.text();
+    return text;
+  } catch (error) {
+    console.error(`Error: ${error.message}`);
+    return "Error in generating review";
+  }
 }
 
 (async () => {
