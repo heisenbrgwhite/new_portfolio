@@ -1,6 +1,6 @@
 const axios = require("axios");
 const { GoogleGenerativeAI } = require("@google/generative-ai");
-const genAI = new GoogleGenerativeAI("AIzaSyCKSdDPCAi-QLhxFAAZrC8_LJnFjuN_QRk");
+const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY);
 const githubToken = process.env.GITHUB_TOKEN;
 const prNumber = process.env.PR_NUMBER;
 const repo = process.env.GITHUB_REPOSITORY;
@@ -42,7 +42,7 @@ async function getReviewFromApi(changes) {
     return text;
   } catch (error) {
     console.error(`Error: ${error.message}`);
-    return "Error in generating review";
+    return "Error in generating review" + process.env.GOOGLE_API_KEY;
   }
 }
 
