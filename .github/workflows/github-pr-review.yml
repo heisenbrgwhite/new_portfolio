@@ -1,10 +1,10 @@
 name: GitHub Actions Pr Review
 run-name: ${{ github.actor }} is testing out GitHub Actions 🚀
 on:
-  issues:
-    types: [opened, edited]
+  pull_request:
+    types: [opened, synchronize]
 jobs:
-  Explore-GitHub-Actions:
+  Comment-On-Changes:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
