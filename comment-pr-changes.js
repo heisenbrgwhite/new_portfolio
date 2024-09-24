@@ -33,7 +33,7 @@ async function getReviewFromApi(changes) {
   const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
   const prompt =
-    "I want you to review the code changes which is in the format of github changes with prefix + and -. The review rules for now is only one - best practice code for typescript. Don't just review but also request changes based on the rules.\nIf there is suggestion, use github suggestion format: \n{ wrong code }\n{description of suggestion}\n```suggestion\n{only suggested code here}\n```\nchanges:\n" +
+    "I want you to review the code changes which is in the format of github changes with prefix + (added line) and - (deleted line). The review rules are, 1. best practice code for typescript, 2. check type annotations and variable names, 3. check if any variable is unused, 4. check if functions are not memoized using useMemo or React.memo, 5. check if there is no unnecessary comment out code. Don't just review but also suggest changes based on these rules.\nIf there is suggestion, use github suggestion format: \n{ wrong code }\n{description of suggestion}\n```suggestion\n{only suggested code here}\n```. And last but not least don't respond with all the lines, just respond suggestions with the lines which ayou are suggesting a change for. Keep the review clean and summarized. \nThe changes are :\n" +
     changes;
   try {
     const result = await model.generateContent(prompt);
