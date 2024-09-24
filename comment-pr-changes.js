@@ -30,7 +30,7 @@ async function commentOnPullRequest(body) {
 }
 
 async function getReviewFromApi(changes) {
-  const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro" });
+  const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
   const prompt =
     "I want you to review the code changes which is in the format of github changes with prefix + and -. The review rules for now is only one - best practice code for typescript. Don't just review but also request changes based on the rules.\nIf there is suggestion, use github suggestion format: \n{ wrong code }\n{description of suggestion}\n```suggestion\n{only suggested code here}\n```\nchanges:\n" +
