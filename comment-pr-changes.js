@@ -1,6 +1,6 @@
 const axios = require("axios");
 // const { GoogleGenerativeAI } = require("@google/generative-ai");
-// const OpenAI = require("openai");
+const { OpenAI } = require("openai");
 // const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY);
 const githubToken = process.env.GITHUB_TOKEN;
 const prNumber = process.env.PR_NUMBER;
@@ -31,27 +31,35 @@ async function commentOnPullRequest(body) {
 }
 
 async function getReviewFromApi(changes) {
+  const baseURL = "https://api.aimlapi.com/v1";
+  const apiKey = "6ebf6933be6e4defa5d4e980a09dce86";
+  const systemPrompt = "You are a senior developer. Be descriptive and helpful";
+  const userPrompt = "Tell me a joke about javascript";
+
+  const api = new OpenAI({
+    apiKey,
+    baseURL,
+  });
+
   try {
-    const res = await axios.post(
-      "https://api.aimlapi.com/chat/completions",
-      {
-        model: "gpt-4o",
-        messages: [
-          {
-            role: "user",
-            content: "Tell me a joke",
-          },
-        ],
-        max_tokens: 512,
-        stream: false,
-      },
-      {
-        headers: {
-          Authorization: "Bearer 6ebf6933be6e4defa5d4e980a09dce86",
+    const completion = await api.chat.completions.create({
+      model: "mistralai/Mistral-7B-Instruct-v0.2",
+      messages: [
+        {
+          role: "system",
+          content: systemPrompt,
         },
-      }
-    );
-    return res.data;
+        {
+          role: "user",
+          content: userPrompt,
+        },
+      ],
+      temperature: 0.7,
+      max_tokens: 256,
+    });
+
+    const response = completion.choices[0].message.content;
+    return response;
   } catch (error) {
     console.error(`Error: ${error.message}`);
   }
