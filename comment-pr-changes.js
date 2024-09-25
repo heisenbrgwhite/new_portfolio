@@ -53,7 +53,7 @@ async function getReviewFromApi(changes) {
       const changes = `Changes in \`${file.filename}\`:\n\n\`\`\`${file.patch}\`\`\``;
       const review = await getReviewFromApi(changes);
       const body = `Review for changes in \`${file.filename}\`:\n\n${review}`;
-      await commentOnPullRequest(body);
+      await commentOnPullRequest(changes);
     }
   } catch (error) {
     console.error(`Error: ${error.message}`);
