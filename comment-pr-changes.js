@@ -39,10 +39,10 @@ async function getReviewFromApi(changes) {
 
   //using openai gpt-40-mini model
   const openai = new OpenAI({
-    // apiKey:
-    //   "sk-JE2VlmGSEzHANXEb3p_lxVaPgCcpYuRJ31NkVIykXeT3BlbkFJT2gmu5DcreVwykgkFXIwW2duQLmNoZGKgr4mC72fUA",
+    apiKey:
+      "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",
     // organization: "org-tBoL5yGCuxaBx0zWa4Ijk59d",
-    project: "proj_FG9VqSZKyQDCDostdiCsPdyv",
+    // project: "proj_FG9VqSZKyQDCDostdiCsPdyv",
   });
   try {
     // const result = await model.generateContent(prompt);
