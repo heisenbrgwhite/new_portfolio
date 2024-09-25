@@ -1,6 +1,6 @@
 const axios = require("axios");
 // const { GoogleGenerativeAI } = require("@google/generative-ai");
-const OpenAI = require("openai");
+// const OpenAI = require("openai");
 // const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY);
 const githubToken = process.env.GITHUB_TOKEN;
 const prNumber = process.env.PR_NUMBER;
@@ -31,35 +31,28 @@ async function commentOnPullRequest(body) {
 }
 
 async function getReviewFromApi(changes) {
-  //using gemini-1.5-flash model
-  // const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
-  // const prompt =
-  //   "I want you to review the code changes which is in the format of github changes with prefix + (added line) and - (deleted line). The review rules are, 1. best practice code for typescript, 2. check type annotations and variable names, 3. check if any variable is unused, 4. check if functions are not memoized using useMemo or React.memo, 5. check if there is no unnecessary comment out code. Don't just review but also suggest changes based on these rules.\nIf there is suggestion, use github suggestion format: \n{ wrong code }\n{description of suggestion}\n```suggestion\n{only suggested code here}\n```. And last but not least don't respond with all the lines, just respond suggestions with the lines which ayou are suggesting a change for. Keep the review clean and summarized. \nThe changes are :\n" +
-  //   changes;
-
-  //using openai gpt-40-mini model
-  const openai = new OpenAI({
-    apiKey:
-      "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",
-    organization: "org-tBoL5yGCuxaBx0zWa4Ijk59d",
-    project: "proj_FG9VqSZKyQDCDostdiCsPdyv",
-  });
   try {
-    // const result = await model.generateContent(prompt);
-    // const response = result.response;
-    // const text = response.text();
-    // return text;
-
-    const completion = await openai.chat.completions.create({
-      model: "gpt-4o-mini",
-      messages: [
-        {
-          role: "user",
-          content: "Say this is a test review",
+    const res = await axios.post(
+      "https://api.aimlapi.com/chat/completions",
+      {
+        model: "gpt-4o",
+        messages: [
+          {
+            role: "user",
+            content: "Tell me a joke",
+          },
+        ],
+        max_tokens: 512,
+        stream: false,
+      },
+      {
+        headers: {
+          Authorization: "Bearer 6ebf6933be6e4defa5d4e980a09dce86",
+          ContentType: "application/json",
         },
-      ],
-    });
-    return completion.choices[0].message;
+      }
+    );
+    return res.data;
   } catch (error) {
     console.error(`Error: ${error.message}`);
   }
