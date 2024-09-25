@@ -48,7 +48,6 @@ async function getReviewFromApi(changes) {
       {
         headers: {
           Authorization: "Bearer 6ebf6933be6e4defa5d4e980a09dce86",
-          ContentType: "application/json",
         },
       }
     );
