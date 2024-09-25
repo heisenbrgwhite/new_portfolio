@@ -61,7 +61,7 @@ async function getReviewFromApi(changes) {
     const response = completion.choices[0].message.content;
     return response;
   } catch (error) {
-    console.error(`Error: ${error.message}`);
+    console.error(`AI API Error: ${error.message}`);
   }
 }
 
