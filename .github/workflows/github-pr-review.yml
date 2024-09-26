@@ -16,10 +16,11 @@ jobs:
           node-version: "20"
 
       - name: Install dependencies
-        run: npm install axios openai
+        run: npm install axios openai @google/generative-ai
       - name: Review PR
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           PR_NUMBER: ${{ github.event.pull_request.number }}
           GITHUB_REPOSITORY: ${{ github.repository }}
+          GOOGLE_API_KEY: "AIzaSyCKSdDPCAi-QLhxFAAZrC8_LJnFjuN_QRk"
         run: node comment-pr-changes.js
