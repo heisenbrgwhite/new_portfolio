@@ -101,7 +101,7 @@ async function getReviewFromApiGemini(changes) {
     const result = await chatSession.sendMessage(
       'before: "' + changes.before + '"\nafter: "' + changes.after + '"'
     );
-    console.log(result.response.text());
+    return result.response.text();
   } catch (error) {
     console.error(`AI API Error: ${error.message}`);
   }
