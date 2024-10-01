@@ -1,6 +1,7 @@
 const axios = require("axios");
 const { GoogleGenerativeAI } = require("@google/generative-ai");
-const { OpenAI } = require("openai");
+const fs = require("fs");
+// const { OpenAI } = require("openai");
 const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY);
 const githubToken = process.env.GITHUB_TOKEN;
 const prNumber = process.env.PR_NUMBER;
@@ -30,40 +31,52 @@ async function commentOnPullRequest(body) {
   );
 }
 
-async function getReviewFromApiChatGpt(changes) {
-  const baseURL = "https://api.aimlapi.com/v1";
-  const apiKey = "6ebf6933be6e4defa5d4e980a09dce86";
-  const systemPrompt = "You are a senior developer. Be descriptive and helpful";
-  const userPrompt = "Tell me a joke about javascript";
+// async function getReviewFromApiChatGpt(changes) {
+//   const baseURL = "https://api.aimlapi.com/v1";
+//   const apiKey = "6ebf6933be6e4defa5d4e980a09dce86";
+//   const systemPrompt = "You are a senior developer. Be descriptive and helpful";
+//   const userPrompt = "Tell me a joke about javascript";
 
-  const api = new OpenAI({
-    apiKey,
-    baseURL,
-  });
+//   const api = new OpenAI({
+//     apiKey,
+//     baseURL,
+//   });
 
-  try {
-    const completion = await api.chat.completions.create({
-      model: "mistralai/Mistral-7B-Instruct-v0.2",
-      messages: [
-        {
-          role: "system",
-          content: systemPrompt,
-        },
-        {
-          role: "user",
-          content: userPrompt,
-        },
-      ],
-      temperature: 0.7,
-      max_tokens: 256,
+//   try {
+//     const completion = await api.chat.completions.create({
+//       model: "mistralai/Mistral-7B-Instruct-v0.2",
+//       messages: [
+//         {
+//           role: "system",
+//           content: systemPrompt,
+//         },
+//         {
+//           role: "user",
+//           content: userPrompt,
+//         },
+//       ],
+//       temperature: 0.7,
+//       max_tokens: 256,
+//     });
+
+//     const response = completion.choices[0].message.content;
+//     return response;
+//   } catch (error) {
+//     console.error(`AI API Error: ${error.message}`);
+//   }
+// }
+function readRules() {
+  return new Promise((resolve, reject) => {
+    fs.readFile("rules.txt", "utf8", (err, data) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(data);
+      }
     });
-
-    const response = completion.choices[0].message.content;
-    return response;
-  } catch (error) {
-    console.error(`AI API Error: ${error.message}`);
-  }
+  });
 }
+
 async function getReviewFromApiGemini(changes) {
   const model = genAI.getGenerativeModel({
     model: "gemini-1.5-flash",
@@ -75,7 +88,7 @@ async function getReviewFromApiGemini(changes) {
     maxOutputTokens: 8192,
     responseMimeType: "text/plain",
   };
-
+  const rules = await readRules();
   try {
     const chatSession = model.startChat({
       generationConfig,
@@ -84,7 +97,10 @@ async function getReviewFromApiGemini(changes) {
           role: "user",
           parts: [
             {
-              text: "You are a senior developer who knows everything about coding best practices. You like to review code especially github pull requests. From now on I will give you some code snippets and you should review it based on the rules below:\n1. Give feedback on the code if it requires improvement.\n2. Look for typescript specific improvements.\n3. reply with a review if the code requires improvement, if the code is perfect no reply is needed.\n4. analyze the whole code and look for redundant code or unused variables, also give feedback on variable and function names if require improvement.\n5. If you have suggestion then use github suggestion format to paste the code and reply with a description of the suggestion.\nGithub suggestion format: \n```suggestion\n${suggested code} //replace this with your code\n```\n${description} //replace this with your description.",
+              text:
+                "You are a senior developer who knows everything about coding best practices. You like to review code especially github pull requests. From now on I will give you some code snippets and you should review it based on the rules below: \n" +
+                rules +
+                "\nIf you have suggestion then use ONLY github suggestion format to paste the code and reply with a description of the suggestion.\nGithub suggestion format: \n```suggestion\n${suggested code} //replace this with your code\n```\n${description} //replace this with your description.",
             },
           ],
         },

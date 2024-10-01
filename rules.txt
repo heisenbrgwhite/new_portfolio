@@ -1,0 +1,86 @@
+Coding Guidlines
+
+1. 関数、変数の命名規則
+
+1.1 UpperCamelCase必須
+class / type / type parameters
+
+1.2 CONSTANT_CASE必須
+グローバル定数
+export していない定数に関してはこの限りではない
+
+1.3 lowerCamelCase必須
+variable / parameter / function / method / property / module alias
+
+2. ルートの`App`や基本的なコンポーネント以外は複数単語を推奨します
+
+例：
+    Bad: 
+        Todo
+        Shutter
+        Banner
+        Type Category = "コンビニ" | "カフェ" | "イタリアン"
+    Good:
+        TodoList
+        ShutterButton
+        CampaignBanner 
+        Type ShopCategory = "コンビニ" | "カフェ" | "イタリアン"
+
+3. 出来るだけtrueで比較するようにすると綺麗です
+
+例：
+    Bad: 
+        if (!disable) {
+            doSomething();
+        }
+    Good:
+        if (disable) {
+            return;
+        }
+        doSomething();
+    Also good:
+        if (enable) {
+            doSomething();
+        }
+
+4. booleanとして明示する為、変数の頭にはis、has、can、shouldなどを使ったほうが良いです。ただし、コンポーネントのPropsにはつけない方が良いです
+
+例：
+    Bad: 
+        <RoundButton isDisabled={true} />
+    Good:
+        <RoundButton disabled={true} />
+    Also Good:
+        <RoundButton disabled />
+
+5. export defaultは使わず、named exportを使用する必須
+
+6. 型定義はinterfaceではなくtypeを使用する必須
+
+7. enumは使わず、UnionTypeを使用する必須
+
+8. nullは極力使わず、undefinedを使用する推奨
+
+9. importは絶対パスを使用する必須
+
+10. 1つのフラグ引数を受け取り、処理を分岐する関数は分割する強く推奨
+
+例：
+    Bad: 
+        const hoge = (flag) => {
+            ...
+            if(flag) {
+                fuga()
+            } else {
+                piyo()
+            }
+        }
+    Good: 
+        // delete hoge(), instead
+        const fuga = () => {}
+        const piyo() => {}
+
+11. All functions are optimized
+12. There are no console.log() remaining in code, if the console.log is not used for error display.
+13. api calls are absolutely inside try and catch block
+14. All react functional components are using React.memo instead of React.FC as type
