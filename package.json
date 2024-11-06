@@ -53,6 +53,7 @@
     ]
   },
   "devDependencies": {
+    "dependency-cruiser": "^16.4.2",
     "nodemon": "^2.0.20"
   }
 }

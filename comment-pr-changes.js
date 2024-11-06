@@ -1,5 +1,7 @@
 const axios = require("axios");
 const { GoogleGenerativeAI } = require("@google/generative-ai");
+const fs = require("fs");
+// const { OpenAI } = require("openai");
 const genAI = new GoogleGenerativeAI(process.env.GOOGLE_API_KEY);
 const githubToken = process.env.GITHUB_TOKEN;
 const prNumber = process.env.PR_NUMBER;
@@ -29,21 +31,115 @@ async function commentOnPullRequest(body) {
   );
 }
 
-async function getReviewFromApi(changes) {
-  const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro" });
+// async function getReviewFromApiChatGpt(changes) {
+//   const baseURL = "https://api.aimlapi.com/v1";
+//   const apiKey = "6ebf6933be6e4defa5d4e980a09dce86";
+//   const systemPrompt = "You are a senior developer. Be descriptive and helpful";
+//   const userPrompt = "Tell me a joke about javascript";
 
-  const prompt =
-    "I want you to review the code changes which is in the format of github changes with prefix + and -. The review rules for now is only one - best practice code for typescript. Don't just review but also request changes based on the rules.\nIf there is suggestion, use github suggestion format: \n{ wrong code }\n{description of suggestion}\n```suggestion\n{only suggested code here}\n```\nchanges:\n" +
-    changes;
+//   const api = new OpenAI({
+//     apiKey,
+//     baseURL,
+//   });
+
+//   try {
+//     const completion = await api.chat.completions.create({
+//       model: "mistralai/Mistral-7B-Instruct-v0.2",
+//       messages: [
+//         {
+//           role: "system",
+//           content: systemPrompt,
+//         },
+//         {
+//           role: "user",
+//           content: userPrompt,
+//         },
+//       ],
+//       temperature: 0.7,
+//       max_tokens: 256,
+//     });
+
+//     const response = completion.choices[0].message.content;
+//     return response;
+//   } catch (error) {
+//     console.error(`AI API Error: ${error.message}`);
+//   }
+// }
+function readRules() {
+  return new Promise((resolve, reject) => {
+    fs.readFile("rules.txt", "utf8", (err, data) => {
+      if (err) {
+        reject(err);
+      } else {
+        resolve(data);
+      }
+    });
+  });
+}
+
+async function getReviewFromApiGemini(changes) {
+  const model = genAI.getGenerativeModel({
+    model: "gemini-1.5-flash",
+  });
+  const generationConfig = {
+    temperature: 1,
+    topP: 0.95,
+    topK: 64,
+    maxOutputTokens: 8192,
+    responseMimeType: "text/plain",
+  };
+  const rules = await readRules();
   try {
-    const result = await model.generateContent(prompt);
-    const response = result.response;
-    const text = response.text();
-    return text;
+    const chatSession = model.startChat({
+      generationConfig,
+      history: [
+        {
+          role: "user",
+          parts: [
+            {
+              text:
+                "You are a senior developer who knows everything about coding best practices. You like to review code especially github pull requests. From now on I will give you some code snippets and you should review it based on the rules below: \n" +
+                rules +
+                "\nIf you have suggestion then use ONLY github suggestion format to paste the code and reply with a description of the suggestion.\nGithub suggestion format: \n```suggestion\n${suggested code} //replace this with your code\n```\n${description} //replace this with your description.",
+            },
+          ],
+        },
+        {
+          role: "model",
+          parts: [
+            {
+              text: "Okay, I'm ready to review your code snippets. Please provide the code, and I'll give you feedback based on the criteria you outlined. Let's make it the best code it can be! \n",
+            },
+          ],
+        },
+      ],
+    });
+    const result = await chatSession.sendMessage(
+      'before: "' + changes.before + '"\nafter: "' + changes.after + '"'
+    );
+    return result.response.text();
   } catch (error) {
-    console.error(`Error: ${error.message}`);
-    return "Error in generating review";
+    console.error(`AI API Error: ${error.message}`);
   }
+}
+
+function separateAndCleanCode(input) {
+  const lines = input.split("\n");
+  const before = [];
+  const after = [];
+
+  lines.forEach((line) => {
+    if (line.startsWith("-")) {
+      before.push(line.substring(1).trim());
+    } else if (line.startsWith("+")) {
+      after.push(line.substring(1).trim());
+    }
+  });
+
+  return {
+    before: before.join("\n"),
+    after: after.join("\n"),
+  };
 }
 
 (async () => {
@@ -51,7 +147,8 @@ async function getReviewFromApi(changes) {
     const files = await getPullRequestFiles();
     for (const file of files) {
       const changes = `Changes in \`${file.filename}\`:\n\n\`\`\`${file.patch}\`\`\``;
-      const review = await getReviewFromApi(changes);
+      const cleanChanges = separateAndCleanCode(changes);
+      const review = await getReviewFromApiGemini(cleanChanges);
       const body = `Review for changes in \`${file.filename}\`:\n\n${review}`;
       await commentOnPullRequest(body);
     }
