@@ -98,9 +98,10 @@ async function getReviewFromApiGemini(changes) {
           parts: [
             {
               text:
-                "You are a senior developer who knows everything about coding best practices. You like to review code especially github pull requests. From now on I will give you some code snippets and you should review it based on the rules below: \n" +
+                "You are a senior developer who has a lot of experience in web and app development. You like to review code, especially github pull requests and give a positive feedback with constructive criticism. From now on I will give you some code snippets and you should review it based on the rules below: \n" +
                 rules +
-                "\nIf you have suggestion then use ONLY github suggestion format to paste the code and reply with a description of the suggestion.\nGithub suggestion format: \n```suggestion\n${suggested code} //replace this with your code\n```\n${description} //replace this with your description.",
+                "\nIf you have suggestion then use ONLY github suggestion format to paste the code and reply with a description of the suggestion.\nGithub suggestion format: \n```suggestion\n${suggested code} //replace this with your code\n```\n${description} //replace this with your description." +
+                "And Please write every review comment in Japanese",
             },
           ],
         },

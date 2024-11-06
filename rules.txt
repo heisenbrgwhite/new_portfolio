@@ -84,3 +84,4 @@ variable / parameter / function / method / property / module alias
 12. There are no console.log() remaining in code, if the console.log is not used for error display.
 13. api calls are absolutely inside try and catch block
 14. All react functional components are using React.memo instead of React.FC as type
+15. Always use useMemo or useCallback for defining components and callback functions respectively. 
